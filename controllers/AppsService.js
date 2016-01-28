@@ -15,7 +15,8 @@ var examples = {};
     "options" : {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
       "termsOfServiceUrl" : "https://whispir.com/tos",
-      "deviceLimit" : 3
+      "deviceLimit" : 3,
+      "workspaces" : [ "B38CBDEFADE38FDE", "E3DABCF485FD458D" ]
     },
     "apns" : {
       "certificateDate" : "2016-01-25T10:00:00,816226465Z",
@@ -36,7 +37,8 @@ var examples = {};
     "options" : {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
       "termsOfServiceUrl" : "https://whispir.com/tos",
-      "deviceLimit" : 3
+      "deviceLimit" : 3,
+      "workspaces" : [ "B38CBDEFADE38FDE", "E3DABCF485FD458D" ]
     },
     "apns" : {
       "certificateDate" : "2016-01-25T10:00:00,816226465Z",
@@ -80,7 +82,8 @@ var examples = {};
   "options" : {
     "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
     "termsOfServiceUrl" : "https://whispir.com/tos",
-    "deviceLimit" : 3
+    "deviceLimit" : 3,
+    "workspaces" : [ "B38CBDEFADE38FDE", "E3DABCF485FD458D" ]
   },
   "apns" : {
     "certificateDate" : "2016-01-25T10:00:00,816226465Z",
@@ -123,7 +126,8 @@ var examples = {};
   "options" : {
     "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
     "termsOfServiceUrl" : "https://whispir.com/tos",
-    "deviceLimit" : 3
+    "deviceLimit" : 3,
+    "workspaces" : [ "B38CBDEFADE38FDE", "E3DABCF485FD458D" ]
   },
   "apns" : {
     "certificateDate" : "2016-01-25T10:00:00,816226465Z",
