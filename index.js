@@ -1,11 +1,12 @@
 'use strict';
 
 var app = require('connect')();
+var cors = require('cors');
 var http = require('http');
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
-var serverPort = 8080;
+var serverPort = process.env.PORT || 8088;
 
 // swaggerRouter configuration
 var options = {
@@ -20,6 +21,7 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
+
   // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
   app.use(middleware.swaggerMetadata());
 
@@ -31,6 +33,8 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
+
+  app.use(cors());
 
   // Start the server
   http.createServer(app).listen(serverPort, function () {
