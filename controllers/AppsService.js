@@ -29,9 +29,19 @@ var examples = {};
       "gcmProjectId" : "whispir-sample-application",
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-    }
+    },
+    "links" : [ {
+      "rel" : "update",
+      "url" : "/apps/BC473BCDFECBE384",
+      "method" : "PUT",
+      "type" : "application/vnd.whispir.application-v1+json;application/vnd.whispir.application-v1+xml"
+    }, {
+      "rel" : "delete",
+      "url" : "/apps/BC473BCDFECBE384",
+      "method" : "DELETE"
+    } ]
   }, {
-    "id" : "BC473BCDFECBE384",
+    "id" : "BC473BCDFECBE385",
     "name" : "Sample Application 2",
     "description" : "Sample Whispir Application for Push Notifications\n",
     "options" : {
@@ -51,7 +61,17 @@ var examples = {};
       "gcmProjectId" : "whispir-sample-application",
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-    }
+    },
+    "links" : [ {
+      "rel" : "update",
+      "url" : "/apps/BC473BCDFECBE385",
+      "method" : "PUT",
+      "type" : "application/vnd.whispir.application-v1+json;application/vnd.whispir.application-v1+xml"
+    }, {
+      "rel" : "delete",
+      "url" : "/apps/BC473BCDFECBE385",
+      "method" : "DELETE"
+    } ]
   } ]
 };
   
@@ -96,7 +116,17 @@ var examples = {};
     "gcmProjectId" : "whispir-sample-application",
     "gcmProjectNumber" : "199337176512",
     "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-  }
+  },
+  "links" : [ {
+    "rel" : "update",
+    "url" : "/apps/BC473BCDFECBE384",
+    "method" : "PUT",
+    "type" : "application/vnd.whispir.application-v1+json;application/vnd.whispir.application-v1+xml"
+  }, {
+    "rel" : "delete",
+    "url" : "/apps/BC473BCDFECBE384",
+    "method" : "DELETE"
+  } ]
 };
   
 
@@ -140,7 +170,17 @@ var examples = {};
     "gcmProjectId" : "whispir-sample-application",
     "gcmProjectNumber" : "199337176512",
     "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-  }
+  },
+  "links" : [ {
+    "rel" : "update",
+    "url" : "/apps/BC473BCDFECBE384",
+    "method" : "PUT",
+    "type" : "application/vnd.whispir.application-v1+json;application/vnd.whispir.application-v1+xml"
+  }, {
+    "rel" : "delete",
+    "url" : "/apps/BC473BCDFECBE384",
+    "method" : "DELETE"
+  } ]
 };
   
 
