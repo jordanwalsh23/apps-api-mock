@@ -1,0 +1,361 @@
+---
+swagger: "2.0"
+info:
+  description: "Create Applications on Whispir to utilise Push Notifications and Chat\
+    \ based Messaging"
+  version: "1.0.0"
+  title: "Whispir Apps APIs"
+  x-gist-id: "ba16750896107be67b91"
+  x-gist-filename: "apps-api-swagger.json"
+  x-gist-description: "Whispir Apps API (Swagger v1)"
+host: "whispir-apps-api-mock.herokuapp.com"
+basePath: "/"
+schemes:
+- "https"
+consumes:
+- "application/vnd.whispir.application-v1+json"
+produces:
+- "application/vnd.whispir.application-v1+json"
+paths:
+  /apps:
+    get:
+      tags:
+      - "apps"
+      summary: "Retrieve a list of applications from Whispir"
+      operationId: "appsGet"
+      parameters: []
+      responses:
+        200:
+          description: "The list of applications is returned."
+          schema:
+            $ref: "#/definitions/applicationsArray"
+          examples:
+            application/json:
+              applications:
+              - id: "BC473BCDFECBE384"
+                name: "Sample Application"
+                description: "Sample Whispir Application for Push Notifications\n"
+                options:
+                  apikey: "ab3bfe83hff8fnf0wfdfiusb02"
+                  termsOfServiceUrl: "https://whispir.com/tos"
+                  deviceLimit: 3
+                apns:
+                  certificateDate: "2016-01-25T10:00:00,816226465Z"
+                  enabled: "true"
+                apnsSandbox:
+                  enabled: "false"
+                gcm:
+                  gcmProjectId: "whispir-sample-application"
+                  gcmProjectNumber: "199337176512"
+                  gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+              - id: "BC473BCDFECBE384"
+                name: "Sample Application 2"
+                description: "Sample Whispir Application for Push Notifications\n"
+                options:
+                  apikey: "ab3bfe83hff8fnf0wfdfiusb02"
+                  termsOfServiceUrl: "https://whispir.com/tos"
+                  deviceLimit: 3
+                apns:
+                  certificateDate: "2016-01-25T10:00:00,816226465Z"
+                  enabled: "true"
+                apnsSandbox:
+                  enabled: "false"
+                gcm:
+                  gcmProjectId: "whispir-sample-application"
+                  gcmProjectNumber: "199337176512"
+                  gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Apps"
+    post:
+      tags:
+      - "apps"
+      summary: "Create a new Application to utilise Whispir push notifications."
+      operationId: "appsPost"
+      parameters:
+      - in: "body"
+        name: "app"
+        description: "The application details to be created and saved in Whispir."
+        required: true
+        schema:
+          $ref: "#/definitions/applicationRequest"
+      responses:
+        201:
+          description: "The Application has been created."
+          schema:
+            $ref: "#/definitions/applicationResponse"
+          examples:
+            application/json:
+              id: "BC473BCDFECBE384"
+              name: "Sample Application"
+              description: "Sample Whispir Application for Push Notifications\n"
+              options:
+                apikey: "ab3bfe83hff8fnf0wfdfiusb02"
+                termsOfServiceUrl: "https://whispir.com/tos"
+                deviceLimit: 3
+              apns:
+                certificateDate: "2016-01-25T10:00:00,816226465Z"
+                enabled: "true"
+              apnsSandbox:
+                enabled: "false"
+              gcm:
+                gcmProjectId: "whispir-sample-application"
+                gcmProjectNumber: "199337176512"
+                gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided.\n"
+        422:
+          description: "Not all information was provided to meet this request.\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Apps"
+  /apps/{appId}:
+    get:
+      tags:
+      - "apps"
+      summary: "Retrieve an application from Whispir"
+      operationId: "appsAppIdGet"
+      parameters:
+      - name: "appId"
+        in: "path"
+        description: "The ID of the application being requested."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "An application is returned"
+          schema:
+            $ref: "#/definitions/applicationResponse"
+          examples:
+            application/json:
+              id: "BC473BCDFECBE384"
+              name: "Sample Application 2"
+              description: "Sample Whispir Application for Push Notifications\n"
+              options:
+                apikey: "ab3bfe83hff8fnf0wfdfiusb02"
+                termsOfServiceUrl: "https://whispir.com/tos"
+                deviceLimit: 3
+              apns:
+                certificateDate: "2016-01-25T10:00:00,816226465Z"
+                enabled: "true"
+              apnsSandbox:
+                enabled: "false"
+              gcm:
+                gcmProjectId: "whispir-sample-application"
+                gcmProjectNumber: "199337176512"
+                gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Apps"
+    put:
+      tags:
+      - "apps"
+      summary: "Update an existing Application with new information."
+      operationId: "appsAppIdPut"
+      parameters:
+      - name: "appId"
+        in: "path"
+        description: "The ID of the application being requested."
+        required: true
+        type: "string"
+      - in: "body"
+        name: "app"
+        description: "The application details to be updated in Whispir."
+        required: true
+        schema:
+          $ref: "#/definitions/applicationRequest"
+      responses:
+        204:
+          description: "The Application has been updated."
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided.\n"
+        422:
+          description: "Not all information was provided to meet this request.\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Apps"
+    delete:
+      tags:
+      - "apps"
+      summary: "Delete an application from Whispir"
+      operationId: "appsAppIdDelete"
+      parameters:
+      - name: "appId"
+        in: "path"
+        description: "The ID of the application being deleted."
+        required: true
+        type: "string"
+      responses:
+        204:
+          description: "An application is deleted."
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Apps"
+securityDefinitions:
+  Username and Password:
+    description: "The Username and Password of the Whispir user that is accessing\
+      \ the API."
+    type: "basic"
+  API Key:
+    description: "The API Key provided after creating an application in Whispir.io.\n"
+    type: "apiKey"
+    name: "apikey"
+    in: "query"
+definitions:
+  applicationRequest:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        title: "The name of the application"
+      description:
+        type: "string"
+        title: "A brief description of the application functionality"
+      options:
+        $ref: "#/definitions/options"
+      apns:
+        $ref: "#/definitions/apnsRequest"
+      apnsSandbox:
+        $ref: "#/definitions/apnsRequest"
+      gcm:
+        $ref: "#/definitions/gcm"
+    title: "The application object to be created"
+  apnsRequest:
+    type: "object"
+    properties:
+      p12Certificate:
+        type: "string"
+        title: "The .p12 certificate created using the Apple developer console."
+      certificatePassword:
+        type: "string"
+        title: "The password for this Apple Certificate"
+    title: "The APNS (Apple) related properties of this application"
+  apnsResponse:
+    type: "object"
+    properties:
+      certificateDate:
+        type: "string"
+        title: "The date this certificate was registered."
+      enabled:
+        type: "string"
+        title: "Whether push notifications are enabled or not"
+        enum:
+        - "true"
+        - "false"
+    title: "The APNS (Apple) related properties of this application"
+  gcm:
+    type: "object"
+    properties:
+      gcmProjectId:
+        type: "string"
+        title: "GCM Project Name from the Google console"
+      gcmSenderNumber:
+        type: "string"
+        title: "The GCM Project Number (also called Sender Key) for this application"
+      gcmApiKey:
+        type: "string"
+        title: "The GCM API Key for this application"
+    title: "The GCM (Google Cloud Messaging) related properties of this application"
+  options:
+    type: "object"
+    properties:
+      apikey:
+        type: "string"
+        title: "A predefined apikey to use for the application. One will be generated\
+          \ if this is not supplied."
+      termsOfServiceUrl:
+        type: "string"
+        title: "An optional URL that can be stored in Whispir to refer to the terms\
+          \ of service for this application."
+      deviceLimit:
+        type: "number"
+        format: "int32"
+        title: "The maximum number of devices that can be registered in Whispir for\
+          \ this application (default: 3)"
+    title: "Optional elements to include in the Apps request"
+  applicationResponse:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        title: "The Whispir ID for the Application"
+      name:
+        type: "string"
+        title: "The name of the application"
+      description:
+        type: "string"
+        title: "A brief description of the application functionality"
+      options:
+        $ref: "#/definitions/options"
+      apns:
+        $ref: "#/definitions/apnsResponse"
+      apnsSandbox:
+        $ref: "#/definitions/apnsResponse"
+      gcm:
+        $ref: "#/definitions/gcm"
+      links:
+        type: "array"
+        items:
+          $ref: "#/definitions/link"
+  applicationsArray:
+    type: "object"
+    properties:
+      applications:
+        type: "array"
+        items:
+          $ref: "#/definitions/applicationResponse"
+    title: "The list of applications currently in Whispir"
+  link:
+    type: "object"
+    properties:
+      rel:
+        type: "string"
+        title: "The description of the link"
+      uri:
+        type: "string"
+        title: "The url to access the information"
+      method:
+        type: "string"
+        title: "The HTTP Method that should be used for this URI"
+    title: "Reference Link to related functions or data"
