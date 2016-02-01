@@ -42,9 +42,6 @@ paths:
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
                 apns:
                   certificateDate: "2016-01-25T10:00:00,816226465Z"
-                  enabled: "true"
-                apnsSandbox:
-                  enabled: "false"
                 gcm:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
@@ -67,9 +64,6 @@ paths:
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
                 apns:
                   certificateDate: "2016-01-25T10:00:00,816226465Z"
-                  enabled: "true"
-                apnsSandbox:
-                  enabled: "false"
                 gcm:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
@@ -123,9 +117,6 @@ paths:
                 workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
               apns:
                 certificateDate: "2016-01-25T10:00:00,816226465Z"
-                enabled: "true"
-              apnsSandbox:
-                enabled: "false"
               gcm:
                 gcmProjectId: "whispir-sample-application"
                 gcmProjectNumber: "199337176512"
@@ -181,9 +172,8 @@ paths:
                 workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
               apns:
                 certificateDate: "2016-01-25T10:00:00,816226465Z"
-                enabled: "true"
               apnsSandbox:
-                enabled: "false"
+                certificateDate: "2016-01-25T10:00:00,816226465Z"
               gcm:
                 gcmProjectId: "whispir-sample-application"
                 gcmProjectNumber: "199337176512"
@@ -268,6 +258,97 @@ paths:
       - Username and Password: []
       - API Key: []
       x-swagger-router-controller: "Apps"
+  /apps/{appId}/invites:
+    get:
+      tags:
+      - "invites"
+      summary: "Get a list of previously sent invitations"
+      operationId: "appsAppIdInvitesGet"
+      consumes:
+      - "application/vnd.whispir.invite-v1+json"
+      - "application/vnd.whispir.invite-v1+xml"
+      produces:
+      - "application/vnd.whispir.invite-v1+json"
+      - "application/vnd.whispir.invite-v1+xml"
+      parameters:
+      - name: "appId"
+        in: "path"
+        description: "The ID of the application being used."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "The list of invitations"
+          schema:
+            $ref: "#/definitions/inviteArray"
+          examples:
+            application/json:
+              invites:
+              - sentDate: "2016-01-25T10:00:00,816226465Z"
+                from: "John Smith"
+                status:
+                  sent: 46
+                  accepted: 12
+                links:
+                - rel: "recipients"
+                  url: "/apps/"
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Invites"
+    post:
+      tags:
+      - "invites"
+      summary: "Send an invitation to a Whispir Contact"
+      operationId: "appsAppIdInvitesPost"
+      consumes:
+      - "application/vnd.whispir.invite-v1+json"
+      - "application/vnd.whispir.invite-v1+xml"
+      produces:
+      - "application/vnd.whispir.invite-v1+json"
+      - "application/vnd.whispir.invite-v1+xml"
+      parameters:
+      - name: "appId"
+        in: "path"
+        description: "The ID of the application being used."
+        required: true
+        type: "string"
+      - in: "body"
+        name: "invite"
+        description: "The invitation object containing the recipients and message\
+          \ content"
+        required: true
+        schema:
+          $ref: "#/definitions/inviteRequest"
+      responses:
+        202:
+          description: "The invitation has been sent"
+          schema:
+            $ref: "#/definitions/defaultResponse"
+          examples:
+            application/json:
+              status: "SUCCESS"
+              message: "Your message has been accepted for processing."
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Invites"
 securityDefinitions:
   Username and Password:
     description: "The Username and Password of the Whispir user that is accessing\
@@ -313,12 +394,6 @@ definitions:
       certificateDate:
         type: "string"
         title: "The date this certificate was registered."
-      enabled:
-        type: "string"
-        title: "Whether push notifications are enabled or not"
-        enum:
-        - "true"
-        - "false"
     title: "The APNS (Apple) related properties of this application"
   gcm:
     type: "object"
@@ -386,6 +461,100 @@ definitions:
         items:
           $ref: "#/definitions/applicationResponse"
     title: "The list of applications currently in Whispir"
+  inviteRequest:
+    type: "object"
+    properties:
+      to:
+        type: "string"
+        title: "The recipient of the invitation"
+      messageTemplateName:
+        type: "string"
+        title: "The supported message template name"
+      messageTemplateId:
+        type: "string"
+        title: "The message template ID to use"
+      subject:
+        type: "string"
+        title: "The subject of the message"
+      body:
+        type: "string"
+        title: "The SMS content for this invitation"
+      email:
+        $ref: "#/definitions/email"
+      web:
+        $ref: "#/definitions/web"
+    title: "The invitation object"
+  inviteArray:
+    title: "The list of invitations that have been sent from this application"
+    type: "array"
+    items:
+      $ref: "#/definitions/inviteResponse"
+  inviteResponse:
+    type: "object"
+    properties:
+      sentDate:
+        type: "string"
+        title: "The date the invitation was sent"
+      from:
+        type: "string"
+        title: "The user that sent the message"
+      status:
+        $ref: "#/definitions/inviteSummaryStatus"
+      links:
+        type: "array"
+        items:
+          $ref: "#/definitions/link"
+    title: "The invite response object"
+  inviteSummaryStatus:
+    type: "object"
+    properties:
+      sent:
+        type: "number"
+        format: "int32"
+        title: "The number of invitations sent out with this particular message"
+      accepted:
+        type: "number"
+        format: "int32"
+        title: "The number of invitations accepted from this particular message"
+    title: "The status of an invitation"
+  email:
+    type: "object"
+    properties:
+      body:
+        type: "string"
+        title: "The body content of the email"
+      type:
+        type: "string"
+        title: "The mime type of the email"
+        enum:
+        - "text/plain"
+        - "text/html"
+    title: "The email object"
+  web:
+    type: "object"
+    properties:
+      body:
+        type: "string"
+        title: "The body content of the web message"
+      type:
+        type: "string"
+        title: "The mime type of the web message"
+        enum:
+        - "text/plain"
+        - "text/html"
+    title: "The web object"
+  defaultResponse:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+        title: "The status of this response"
+        enum:
+        - "SUCCESS"
+      message:
+        type: "string"
+        title: "The string content of this response"
+    title: "The default response object"
   link:
     type: "object"
     properties:

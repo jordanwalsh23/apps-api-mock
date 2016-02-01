@@ -19,11 +19,7 @@ var examples = {};
       "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D"
     },
     "apns" : {
-      "certificateDate" : "2016-01-25T10:00:00,816226465Z",
-      "enabled" : "true"
-    },
-    "apnsSandbox" : {
-      "enabled" : "false"
+      "certificateDate" : "2016-01-25T10:00:00,816226465Z"
     },
     "gcm" : {
       "gcmProjectId" : "whispir-sample-application",
@@ -51,11 +47,7 @@ var examples = {};
       "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D"
     },
     "apns" : {
-      "certificateDate" : "2016-01-25T10:00:00,816226465Z",
-      "enabled" : "true"
-    },
-    "apnsSandbox" : {
-      "enabled" : "false"
+      "certificateDate" : "2016-01-25T10:00:00,816226465Z"
     },
     "gcm" : {
       "gcmProjectId" : "whispir-sample-application",
@@ -106,11 +98,7 @@ var examples = {};
     "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D"
   },
   "apns" : {
-    "certificateDate" : "2016-01-25T10:00:00,816226465Z",
-    "enabled" : "true"
-  },
-  "apnsSandbox" : {
-    "enabled" : "false"
+    "certificateDate" : "2016-01-25T10:00:00,816226465Z"
   },
   "gcm" : {
     "gcmProjectId" : "whispir-sample-application",
@@ -160,11 +148,10 @@ var examples = {};
     "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D"
   },
   "apns" : {
-    "certificateDate" : "2016-01-25T10:00:00,816226465Z",
-    "enabled" : "true"
+    "certificateDate" : "2016-01-25T10:00:00,816226465Z"
   },
   "apnsSandbox" : {
-    "enabled" : "false"
+    "certificateDate" : "2016-01-25T10:00:00,816226465Z"
   },
   "gcm" : {
     "gcmProjectId" : "whispir-sample-application",
