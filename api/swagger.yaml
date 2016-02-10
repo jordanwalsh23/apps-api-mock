@@ -144,60 +144,6 @@ paths:
       - API Key: []
       x-swagger-router-controller: "Apps"
   /apps/{appId}:
-    get:
-      tags:
-      - "apps"
-      summary: "Retrieve an application from Whispir"
-      operationId: "appsAppIdGet"
-      parameters:
-      - name: "appId"
-        in: "path"
-        description: "The ID of the application being requested."
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "An application is returned"
-          schema:
-            $ref: "#/definitions/applicationResponse"
-          examples:
-            application/json:
-              id: "BC473BCDFECBE384"
-              name: "Sample Application 2"
-              description: "Sample Whispir Application for Push Notifications\n"
-              options:
-                apikey: "ab3bfe83hff8fnf0wfdfiusb02"
-                termsOfServiceUrl: "https://whispir.com/tos"
-                deviceLimit: 3
-                workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
-              apns:
-                certificateDate: "2016-01-25T10:00:00,816226465Z"
-              apnsSandbox:
-                certificateDate: "2016-01-25T10:00:00,816226465Z"
-              gcm:
-                gcmProjectId: "whispir-sample-application"
-                gcmProjectNumber: "199337176512"
-                gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-              links:
-              - rel: "update"
-                url: "/apps/BC473BCDFECBE384"
-                method: "PUT"
-                type: "application/vnd.whispir.application-v1+json;application/vnd.whispir.application-v1+xml"
-              - rel: "delete"
-                url: "/apps/BC473BCDFECBE384"
-                method: "DELETE"
-        401:
-          description: "Username and Password is not correct"
-        403:
-          description: "No permission to access this resource, or API key incorrect/not\
-            \ provided\n"
-        504:
-          description: "Request took greater than 20s to complete out. Please try\
-            \ again.\n"
-      security:
-      - Username and Password: []
-      - API Key: []
-      x-swagger-router-controller: "Apps"
     put:
       tags:
       - "apps"
@@ -377,6 +323,13 @@ definitions:
         $ref: "#/definitions/apnsRequest"
       gcm:
         $ref: "#/definitions/gcm"
+      registrationType:
+        type: "string"
+        title: "The selected type of registration"
+        enum:
+        - "INVITE"
+        - "SELF"
+        - "BACKGROUND"
     title: "The application object to be created"
   apnsRequest:
     type: "object"
@@ -449,6 +402,13 @@ definitions:
         $ref: "#/definitions/apnsResponse"
       gcm:
         $ref: "#/definitions/gcm"
+      registrationType:
+        type: "string"
+        title: "The selected type of registration"
+        enum:
+        - "INVITE"
+        - "SELF"
+        - "BACKGROUND"
       links:
         type: "array"
         items:
