@@ -26,6 +26,7 @@ exports.appsGet = function(args, res, next) {
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
     },
+    "registrationType" : "INVITE",
     "links" : [ {
       "rel" : "update",
       "url" : "/apps/BC473BCDFECBE384",
@@ -104,6 +105,7 @@ exports.appsPost = function(args, res, next) {
     "gcmProjectNumber" : "199337176512",
     "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
   },
+  "registrationType" : "INVITE",
   "links" : [ {
     "rel" : "update",
     "url" : "/apps/BC473BCDFECBE384",

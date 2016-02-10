@@ -46,6 +46,7 @@ paths:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
                   gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+                registrationType: "INVITE"
                 links:
                 - rel: "update"
                   url: "/apps/BC473BCDFECBE384"
@@ -121,6 +122,7 @@ paths:
                 gcmProjectId: "whispir-sample-application"
                 gcmProjectNumber: "199337176512"
                 gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+              registrationType: "INVITE"
               links:
               - rel: "update"
                 url: "/apps/BC473BCDFECBE384"
