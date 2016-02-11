@@ -206,12 +206,12 @@ paths:
       - Username and Password: []
       - API Key: []
       x-swagger-router-controller: "Apps"
-  /apps/{appId}/invites:
+  /workspaces/{workspaceId}/invites:
     get:
       tags:
       - "invites"
       summary: "Get a list of previously sent invitations"
-      operationId: "appsAppIdInvitesGet"
+      operationId: "workspacesWorkspaceIdInvitesGet"
       consumes:
       - "application/vnd.whispir.invite-v1+json"
       - "application/vnd.whispir.invite-v1+xml"
@@ -219,9 +219,9 @@ paths:
       - "application/vnd.whispir.invite-v1+json"
       - "application/vnd.whispir.invite-v1+xml"
       parameters:
-      - name: "appId"
+      - name: "workspaceId"
         in: "path"
-        description: "The ID of the application being used."
+        description: "The ID of the workspace being used."
         required: true
         type: "string"
       responses:
@@ -232,14 +232,12 @@ paths:
           examples:
             application/json:
               invites:
-              - sentDate: "2016-01-25T10:00:00,816226465Z"
+              - appId: "B384CFD912ADE903"
+                sentDate: "2016-01-25T10:00:00,816226465Z"
                 from: "John Smith"
                 status:
                   sent: 46
                   accepted: 12
-                links:
-                - rel: "recipients"
-                  url: "/apps/"
         401:
           description: "Username and Password is not correct"
         403:
@@ -256,7 +254,7 @@ paths:
       tags:
       - "invites"
       summary: "Send an invitation to a Whispir Contact"
-      operationId: "appsAppIdInvitesPost"
+      operationId: "workspacesWorkspaceIdInvitesPost"
       consumes:
       - "application/vnd.whispir.invite-v1+json"
       - "application/vnd.whispir.invite-v1+xml"
@@ -264,9 +262,9 @@ paths:
       - "application/vnd.whispir.invite-v1+json"
       - "application/vnd.whispir.invite-v1+xml"
       parameters:
-      - name: "appId"
+      - name: "workspaceId"
         in: "path"
-        description: "The ID of the application being used."
+        description: "The ID of the workspace being used."
         required: true
         type: "string"
       - in: "body"
@@ -426,25 +424,17 @@ definitions:
   inviteRequest:
     type: "object"
     properties:
+      appId:
+        type: "string"
+        title: "The ID of the application to send the invite to"
       to:
         type: "string"
         title: "The recipient of the invitation"
-      messageTemplateName:
-        type: "string"
-        title: "The supported message template name"
-      messageTemplateId:
-        type: "string"
-        title: "The message template ID to use"
       subject:
         type: "string"
         title: "The subject of the message"
-      body:
-        type: "string"
-        title: "The SMS content for this invitation"
       email:
         $ref: "#/definitions/email"
-      web:
-        $ref: "#/definitions/web"
     title: "The invitation object"
   inviteArray:
     title: "The list of invitations that have been sent from this application"
@@ -492,19 +482,6 @@ definitions:
         - "text/plain"
         - "text/html"
     title: "The email object"
-  web:
-    type: "object"
-    properties:
-      body:
-        type: "string"
-        title: "The body content of the web message"
-      type:
-        type: "string"
-        title: "The mime type of the web message"
-        enum:
-        - "text/plain"
-        - "text/html"
-    title: "The web object"
   defaultResponse:
     type: "object"
     properties:

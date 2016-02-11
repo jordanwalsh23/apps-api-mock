@@ -6,10 +6,10 @@ var url = require('url');
 var Invites = require('./InvitesService');
 
 
-module.exports.appsAppIdInvitesGet = function appsAppIdInvitesGet (req, res, next) {
-  Invites.appsAppIdInvitesGet(req.swagger.params, res, next);
+module.exports.workspacesWorkspaceIdInvitesGet = function workspacesWorkspaceIdInvitesGet (req, res, next) {
+  Invites.workspacesWorkspaceIdInvitesGet(req.swagger.params, res, next);
 };
 
-module.exports.appsAppIdInvitesPost = function appsAppIdInvitesPost (req, res, next) {
-  Invites.appsAppIdInvitesPost(req.swagger.params, res, next);
+module.exports.workspacesWorkspaceIdInvitesPost = function workspacesWorkspaceIdInvitesPost (req, res, next) {
+  Invites.workspacesWorkspaceIdInvitesPost(req.swagger.params, res, next);
 };

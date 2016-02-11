@@ -1,25 +1,22 @@
 'use strict';
 
-exports.appsAppIdInvitesGet = function(args, res, next) {
+exports.workspacesWorkspaceIdInvitesGet = function(args, res, next) {
   /**
    * parameters expected in the args:
-  * appId (String)
+  * workspaceId (String)
   **/
   
   
   var examples = {};
   examples['application/json'] = {
   "invites" : [ {
+    "appId" : "B384CFD912ADE903",
     "sentDate" : "2016-01-25T10:00:00,816226465Z",
     "from" : "John Smith",
     "status" : {
       "sent" : 46,
       "accepted" : 12
-    },
-    "links" : [ {
-      "rel" : "recipients",
-      "url" : "/apps/"
-    } ]
+    }
   } ]
 };
   
@@ -34,10 +31,10 @@ exports.appsAppIdInvitesGet = function(args, res, next) {
   
 }
 
-exports.appsAppIdInvitesPost = function(args, res, next) {
+exports.workspacesWorkspaceIdInvitesPost = function(args, res, next) {
   /**
    * parameters expected in the args:
-  * appId (String)
+  * workspaceId (String)
   * invite (InviteRequest)
   **/
   
