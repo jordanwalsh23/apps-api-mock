@@ -336,12 +336,12 @@ definitions:
   apnsRequest:
     type: "object"
     properties:
-      p12Certificate:
+      certificate:
         type: "string"
-        title: "The .p12 certificate created using the Apple developer console."
-      certificatePassword:
+        title: "The certificate file for this application"
+      privateKey:
         type: "string"
-        title: "The password for this Apple Certificate"
+        title: "The private key file for this application"
     title: "The APNS (Apple) related properties of this application"
   apnsResponse:
     type: "object"
