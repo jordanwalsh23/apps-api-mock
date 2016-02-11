@@ -13,3 +13,7 @@ module.exports.workspacesWorkspaceIdInvitesGet = function workspacesWorkspaceIdI
 module.exports.workspacesWorkspaceIdInvitesPost = function workspacesWorkspaceIdInvitesPost (req, res, next) {
   Invites.workspacesWorkspaceIdInvitesPost(req.swagger.params, res, next);
 };
+
+module.exports.workspacesWorkspaceIdInvitesInviteIdGet = function workspacesWorkspaceIdInvitesInviteIdGet (req, res, next) {
+  Invites.workspacesWorkspaceIdInvitesInviteIdGet(req.swagger.params, res, next);
+};

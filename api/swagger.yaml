@@ -232,12 +232,28 @@ paths:
           examples:
             application/json:
               invites:
-              - appId: "B384CFD912ADE903"
+              - id: "B384CFD912ADE903"
+                appId: "C39EFDBCAE349DFE"
                 sentDate: "2016-01-25T10:00:00,816226465Z"
                 from: "John Smith"
                 status:
                   sent: 46
                   accepted: 12
+                links:
+                - rel: "self"
+                  method: "GET"
+                  url: "/workspaces/B384DEFE3891AFCB/invites/B384CFD912ADE903"
+              - id: "AAF384FED8490DFE"
+                appId: "C39EFDBCAE349DFE"
+                sentDate: "2016-01-25T10:00:00,816226465Z"
+                from: "John Smith"
+                status:
+                  sent: 46
+                  accepted: 12
+                links:
+                - rel: "self"
+                  method: "GET"
+                  url: "/workspaces/B384DEFE3891AFCB/invites/AAF384FED8490DFE"
         401:
           description: "Username and Password is not correct"
         403:
@@ -283,6 +299,61 @@ paths:
             application/json:
               status: "SUCCESS"
               message: "Your message has been accepted for processing."
+        401:
+          description: "Username and Password is not correct"
+        403:
+          description: "No permission to access this resource, or API key incorrect/not\
+            \ provided\n"
+        504:
+          description: "Request took greater than 20s to complete out. Please try\
+            \ again.\n"
+      security:
+      - Username and Password: []
+      - API Key: []
+      x-swagger-router-controller: "Invites"
+  /workspaces/{workspaceId}/invites/{inviteId}:
+    post:
+      tags:
+      - "invites"
+      summary: "Retrieve an existing invitation sent to whispir contacts"
+      operationId: "workspacesWorkspaceIdInvitesInviteIdGet"
+      consumes:
+      - "application/vnd.whispir.invite-v1+json"
+      - "application/vnd.whispir.invite-v1+xml"
+      produces:
+      - "application/vnd.whispir.invite-v1+json"
+      - "application/vnd.whispir.invite-v1+xml"
+      parameters:
+      - name: "workspaceId"
+        in: "path"
+        description: "The ID of the workspace being used."
+        required: true
+        type: "string"
+      - name: "inviteId"
+        in: "path"
+        description: "The ID of the invite being retrieved."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "The invitation has been sent"
+          schema:
+            $ref: "#/definitions/inviteSingleResponse"
+          examples:
+            application/json:
+              id: "AAF384FED8490DFE"
+              appId: "C39EFDBCAE349DFE"
+              sentDate: "2016-01-25T10:00:00,816226465Z"
+              from: "John Smith"
+              status:
+                sent: 46
+                accepted: 12
+              recipients:
+              - name: "Brad Smith"
+                type: "ActiveContact"
+                status: "Pending"
+                lastUpdated: "2016-01-25T10:00:00,816226465Z"
+                notes: ""
         401:
           description: "Username and Password is not correct"
         403:
@@ -440,10 +511,16 @@ definitions:
     title: "The list of invitations that have been sent from this application"
     type: "array"
     items:
-      $ref: "#/definitions/inviteResponse"
-  inviteResponse:
+      $ref: "#/definitions/inviteGroupResponse"
+  inviteGroupResponse:
     type: "object"
     properties:
+      id:
+        type: "string"
+        title: "The ID of the invitation"
+      appId:
+        type: "string"
+        title: "The ID of the application associated to the invitation"
       sentDate:
         type: "string"
         title: "The date the invitation was sent"
@@ -469,6 +546,55 @@ definitions:
         format: "int32"
         title: "The number of invitations accepted from this particular message"
     title: "The status of an invitation"
+  inviteSingleResponse:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        title: "The ID of the invitation"
+      sentDate:
+        type: "string"
+        title: "The date the invitation was sent"
+      from:
+        type: "string"
+        title: "The user that sent the message"
+      status:
+        $ref: "#/definitions/inviteSummaryStatus"
+      recipients:
+        type: "array"
+        items:
+          $ref: "#/definitions/recipients"
+      links:
+        type: "array"
+        items:
+          $ref: "#/definitions/link"
+    title: "The invite response object"
+  recipients:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        title: "the name of the contact that has received the invitation"
+      type:
+        type: "string"
+        title: "The type of invitation"
+        enum:
+        - "ActiveContact"
+        - "ContactUpdate"
+        - "Application"
+      status:
+        type: "string"
+        title: "The status of the current recipient's invitation"
+        enum:
+        - "Pending"
+        - "Accepted"
+      lastUpdated:
+        type: "string"
+        title: "The date that the invitation was sent or accepted"
+      notes:
+        type: "string"
+        title: "Any other notes on this invitation"
+    title: "The recipient that has received the invitation"
   email:
     type: "object"
     properties:
@@ -489,7 +615,7 @@ definitions:
         type: "string"
         title: "The status of this response"
         enum:
-        - "SUCCESS"
+        - "OK"
       message:
         type: "string"
         title: "The string content of this response"
