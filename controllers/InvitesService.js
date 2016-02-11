@@ -96,6 +96,7 @@ exports.workspacesWorkspaceIdInvitesInviteIdGet = function(args, res, next) {
   },
   "recipients" : [ {
     "name" : "Brad Smith",
+    "mri" : "Brad.Smith.220.Sandbox@Contact.whispir.com",
     "type" : "ActiveContact",
     "status" : "Pending",
     "lastUpdated" : "2016-01-25T10:00:00,816226465Z",
