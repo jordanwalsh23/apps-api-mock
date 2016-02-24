@@ -27,7 +27,7 @@ exports.appsGet = function(args, res, next) {
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
     },
-    "registrationType" : "INVITE",
+    "registrationTypes" : [ "INVITE" ],
     "managedBySystem" : false,
     "links" : [ {
       "rel" : "update",
@@ -58,7 +58,7 @@ exports.appsGet = function(args, res, next) {
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
     },
-    "registrationType" : "INVITE",
+    "registrationTypes" : [ "INVITE" ],
     "managedBySystem" : false,
     "links" : [ {
       "rel" : "update",
@@ -111,7 +111,7 @@ exports.appsPost = function(args, res, next) {
     "gcmProjectNumber" : "199337176512",
     "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
   },
-  "registrationType" : "INVITE",
+  "registrationTypes" : [ "INVITE" ],
   "managedBySystem" : false,
   "links" : [ {
     "rel" : "update",

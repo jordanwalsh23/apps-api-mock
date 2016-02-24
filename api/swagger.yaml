@@ -47,7 +47,8 @@ paths:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
                   gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-                registrationType: "INVITE"
+                registrationTypes:
+                - "INVITE"
                 managedBySystem: false
                 links:
                 - rel: "update"
@@ -72,7 +73,8 @@ paths:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
                   gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-                registrationType: "INVITE"
+                registrationTypes:
+                - "INVITE"
                 managedBySystem: false
                 links:
                 - rel: "update"
@@ -128,7 +130,8 @@ paths:
                 gcmProjectId: "whispir-sample-application"
                 gcmProjectNumber: "199337176512"
                 gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
-              registrationType: "INVITE"
+              registrationTypes:
+              - "INVITE"
               managedBySystem: false
               links:
               - rel: "update"
@@ -485,13 +488,14 @@ definitions:
         $ref: "#/definitions/apnsResponse"
       gcm:
         $ref: "#/definitions/gcm"
-      registrationType:
-        type: "string"
-        title: "The selected type of registration"
-        enum:
-        - "INVITE"
-        - "SELF"
-        - "BACKGROUND"
+      registrationTypes:
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "INVITE"
+          - "SELF"
+          - "BACKGROUND"
       managedBySystem:
         type: "boolean"
         title: "Flag that advises whether the app is user or system created"
