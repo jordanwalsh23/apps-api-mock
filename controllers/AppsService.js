@@ -16,7 +16,8 @@ exports.appsGet = function(args, res, next) {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
       "termsOfServiceUrl" : "https://whispir.com/tos",
       "deviceLimit" : 3,
-      "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D"
+      "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
+      "contactDescriptionField" : "jobTitle"
     },
     "apns" : {
       "certificateDate" : "2016-01-25T10:00:00,816226465Z"
@@ -27,6 +28,7 @@ exports.appsGet = function(args, res, next) {
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
     },
     "registrationType" : "INVITE",
+    "managedBySystem" : false,
     "links" : [ {
       "rel" : "update",
       "url" : "/apps/BC473BCDFECBE384",
@@ -45,7 +47,8 @@ exports.appsGet = function(args, res, next) {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
       "termsOfServiceUrl" : "https://whispir.com/tos",
       "deviceLimit" : 3,
-      "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D"
+      "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
+      "contactDescriptionField" : "jobTitle"
     },
     "apns" : {
       "certificateDate" : "2016-01-25T10:00:00,816226465Z"
@@ -55,6 +58,8 @@ exports.appsGet = function(args, res, next) {
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
     },
+    "registrationType" : "INVITE",
+    "managedBySystem" : false,
     "links" : [ {
       "rel" : "update",
       "url" : "/apps/BC473BCDFECBE385",
@@ -95,7 +100,8 @@ exports.appsPost = function(args, res, next) {
     "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
     "termsOfServiceUrl" : "https://whispir.com/tos",
     "deviceLimit" : 3,
-    "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D"
+    "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
+    "contactDescriptionField" : "jobTitle"
   },
   "apns" : {
     "certificateDate" : "2016-01-25T10:00:00,816226465Z"
@@ -106,6 +112,7 @@ exports.appsPost = function(args, res, next) {
     "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
   },
   "registrationType" : "INVITE",
+  "managedBySystem" : false,
   "links" : [ {
     "rel" : "update",
     "url" : "/apps/BC473BCDFECBE384",

@@ -40,6 +40,7 @@ paths:
                   termsOfServiceUrl: "https://whispir.com/tos"
                   deviceLimit: 3
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
+                  contactDescriptionField: "jobTitle"
                 apns:
                   certificateDate: "2016-01-25T10:00:00,816226465Z"
                 gcm:
@@ -47,6 +48,7 @@ paths:
                   gcmProjectNumber: "199337176512"
                   gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
                 registrationType: "INVITE"
+                managedBySystem: false
                 links:
                 - rel: "update"
                   url: "/apps/BC473BCDFECBE384"
@@ -63,12 +65,15 @@ paths:
                   termsOfServiceUrl: "https://whispir.com/tos"
                   deviceLimit: 3
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
+                  contactDescriptionField: "jobTitle"
                 apns:
                   certificateDate: "2016-01-25T10:00:00,816226465Z"
                 gcm:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
                   gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+                registrationType: "INVITE"
+                managedBySystem: false
                 links:
                 - rel: "update"
                   url: "/apps/BC473BCDFECBE385"
@@ -116,6 +121,7 @@ paths:
                 termsOfServiceUrl: "https://whispir.com/tos"
                 deviceLimit: 3
                 workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
+                contactDescriptionField: "jobTitle"
               apns:
                 certificateDate: "2016-01-25T10:00:00,816226465Z"
               gcm:
@@ -123,6 +129,7 @@ paths:
                 gcmProjectNumber: "199337176512"
                 gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
               registrationType: "INVITE"
+              managedBySystem: false
               links:
               - rel: "update"
                 url: "/apps/BC473BCDFECBE384"
@@ -453,6 +460,10 @@ definitions:
         type: "string"
         title: "Comma separated list of workspace IDs that this application can be\
           \ used in"
+      contactDescriptionField:
+        type: "string"
+        title: "The field that should be inspected on the contact profile for the\
+          \ 'Description' field in the application."
     title: "Optional elements to include in the Apps request"
   applicationResponse:
     type: "object"
@@ -481,6 +492,10 @@ definitions:
         - "INVITE"
         - "SELF"
         - "BACKGROUND"
+      managedBySystem:
+        type: "boolean"
+        title: "Flag that advises whether the app is user or system created"
+        default: false
       links:
         type: "array"
         items:
