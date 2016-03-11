@@ -37,6 +37,7 @@ paths:
                 description: "Sample Whispir Application for Push Notifications\n"
                 options:
                   apikey: "ab3bfe83hff8fnf0wfdfiusb02"
+                  clientSecret: "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd"
                   termsOfServiceUrl: "https://whispir.com/tos"
                   deviceLimit: 3
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
@@ -63,6 +64,7 @@ paths:
                 description: "Sample Whispir Application for Push Notifications\n"
                 options:
                   apikey: "ab3bfe83hff8fnf0wfdfiusb02"
+                  clientSecret: "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd"
                   termsOfServiceUrl: "https://whispir.com/tos"
                   deviceLimit: 3
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
@@ -120,6 +122,7 @@ paths:
               description: "Sample Whispir Application for Push Notifications\n"
               options:
                 apikey: "ab3bfe83hff8fnf0wfdfiusb02"
+                clientSecret: "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd"
                 termsOfServiceUrl: "https://whispir.com/tos"
                 deviceLimit: 3
                 workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
@@ -450,6 +453,9 @@ definitions:
         type: "string"
         title: "A predefined apikey to use for the application. One will be generated\
           \ if this is not supplied."
+      clientSecret:
+        type: "string"
+        title: "The secret key that can be used to make API callsa"
       termsOfServiceUrl:
         type: "string"
         title: "An optional URL that can be stored in Whispir to refer to the terms\

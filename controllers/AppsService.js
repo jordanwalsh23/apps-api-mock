@@ -14,6 +14,7 @@ exports.appsGet = function(args, res, next) {
     "description" : "Sample Whispir Application for Push Notifications\n",
     "options" : {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
+      "clientSecret" : "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd",
       "termsOfServiceUrl" : "https://whispir.com/tos",
       "deviceLimit" : 3,
       "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
@@ -45,6 +46,7 @@ exports.appsGet = function(args, res, next) {
     "description" : "Sample Whispir Application for Push Notifications\n",
     "options" : {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
+      "clientSecret" : "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd",
       "termsOfServiceUrl" : "https://whispir.com/tos",
       "deviceLimit" : 3,
       "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
@@ -98,6 +100,7 @@ exports.appsPost = function(args, res, next) {
   "description" : "Sample Whispir Application for Push Notifications\n",
   "options" : {
     "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
+    "clientSecret" : "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd",
     "termsOfServiceUrl" : "https://whispir.com/tos",
     "deviceLimit" : 3,
     "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
