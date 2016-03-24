@@ -1,5 +1,28 @@
 'use strict';
 
+exports.appsAppIdDelete = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * appId (String)
+  **/
+  // no response value expected for this operation
+  
+  
+  res.end();
+}
+
+exports.appsAppIdPut = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * appId (String)
+  * app (ApplicationRequest)
+  **/
+  // no response value expected for this operation
+  
+  
+  res.end();
+}
+
 exports.appsGet = function(args, res, next) {
   /**
    * parameters expected in the args:
@@ -15,7 +38,6 @@ exports.appsGet = function(args, res, next) {
     "options" : {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
       "clientSecret" : "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd",
-      "termsOfServiceUrl" : "https://whispir.com/tos",
       "deviceLimit" : 3,
       "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
       "contactDescriptionField" : "jobTitle"
@@ -28,6 +50,7 @@ exports.appsGet = function(args, res, next) {
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
     },
+    "defaultWorkspaceEnabled" : true,
     "registrationTypes" : [ "INVITE" ],
     "managedBySystem" : false,
     "links" : [ {
@@ -47,7 +70,6 @@ exports.appsGet = function(args, res, next) {
     "options" : {
       "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
       "clientSecret" : "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd",
-      "termsOfServiceUrl" : "https://whispir.com/tos",
       "deviceLimit" : 3,
       "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
       "contactDescriptionField" : "jobTitle"
@@ -60,6 +82,7 @@ exports.appsGet = function(args, res, next) {
       "gcmProjectNumber" : "199337176512",
       "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
     },
+    "defaultWorkspaceEnabled" : true,
     "registrationTypes" : [ "INVITE" ],
     "managedBySystem" : false,
     "links" : [ {
@@ -101,7 +124,6 @@ exports.appsPost = function(args, res, next) {
   "options" : {
     "apikey" : "ab3bfe83hff8fnf0wfdfiusb02",
     "clientSecret" : "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd",
-    "termsOfServiceUrl" : "https://whispir.com/tos",
     "deviceLimit" : 3,
     "workspaces" : "B38CBDEFADE38FDE,E3DABCF485FD458D",
     "contactDescriptionField" : "jobTitle"
@@ -114,6 +136,7 @@ exports.appsPost = function(args, res, next) {
     "gcmProjectNumber" : "199337176512",
     "gcmApiKey" : "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
   },
+  "defaultWorkspaceEnabled" : true,
   "registrationTypes" : [ "INVITE" ],
   "managedBySystem" : false,
   "links" : [ {
@@ -137,28 +160,5 @@ exports.appsPost = function(args, res, next) {
   }
   
   
-}
-
-exports.appsAppIdPut = function(args, res, next) {
-  /**
-   * parameters expected in the args:
-  * appId (String)
-  * app (ApplicationRequest)
-  **/
-  // no response value expected for this operation
-  
-  
-  res.end();
-}
-
-exports.appsAppIdDelete = function(args, res, next) {
-  /**
-   * parameters expected in the args:
-  * appId (String)
-  **/
-  // no response value expected for this operation
-  
-  
-  res.end();
 }
 

@@ -38,7 +38,6 @@ paths:
                 options:
                   apikey: "ab3bfe83hff8fnf0wfdfiusb02"
                   clientSecret: "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd"
-                  termsOfServiceUrl: "https://whispir.com/tos"
                   deviceLimit: 3
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
                   contactDescriptionField: "jobTitle"
@@ -48,6 +47,7 @@ paths:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
                   gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+                defaultWorkspaceEnabled: true
                 registrationTypes:
                 - "INVITE"
                 managedBySystem: false
@@ -65,7 +65,6 @@ paths:
                 options:
                   apikey: "ab3bfe83hff8fnf0wfdfiusb02"
                   clientSecret: "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd"
-                  termsOfServiceUrl: "https://whispir.com/tos"
                   deviceLimit: 3
                   workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
                   contactDescriptionField: "jobTitle"
@@ -75,6 +74,7 @@ paths:
                   gcmProjectId: "whispir-sample-application"
                   gcmProjectNumber: "199337176512"
                   gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+                defaultWorkspaceEnabled: true
                 registrationTypes:
                 - "INVITE"
                 managedBySystem: false
@@ -123,7 +123,6 @@ paths:
               options:
                 apikey: "ab3bfe83hff8fnf0wfdfiusb02"
                 clientSecret: "8ddfs90f90df90df9j0d90jfds0j9fd0j990jfd"
-                termsOfServiceUrl: "https://whispir.com/tos"
                 deviceLimit: 3
                 workspaces: "B38CBDEFADE38FDE,E3DABCF485FD458D"
                 contactDescriptionField: "jobTitle"
@@ -133,6 +132,7 @@ paths:
                 gcmProjectId: "whispir-sample-application"
                 gcmProjectNumber: "199337176512"
                 gcmApiKey: "AIzaSyARTfazpXVmt7TvyYp4DkGAw59rjpdzKdQ"
+              defaultWorkspaceEnabled: true
               registrationTypes:
               - "INVITE"
               managedBySystem: false
@@ -249,7 +249,7 @@ paths:
                 appId: "C39EFDBCAE349DFE"
                 sentDate: "2016-01-25T10:00:00,816226465Z"
                 from: "John Smith"
-                status:
+                result:
                   sent: 46
                   accepted: 12
                 links:
@@ -260,7 +260,7 @@ paths:
                 appId: "C39EFDBCAE349DFE"
                 sentDate: "2016-01-25T10:00:00,816226465Z"
                 from: "John Smith"
-                status:
+                result:
                   sent: 46
                   accepted: 12
                 links:
@@ -358,7 +358,7 @@ paths:
               appId: "C39EFDBCAE349DFE"
               sentDate: "2016-01-25T10:00:00,816226465Z"
               from: "John Smith"
-              status:
+              result:
                 sent: 46
                 accepted: 12
               recipients:
@@ -408,13 +408,19 @@ definitions:
         $ref: "#/definitions/apnsRequest"
       gcm:
         $ref: "#/definitions/gcm"
-      registrationType:
-        type: "string"
-        title: "The selected type of registration"
-        enum:
-        - "INVITE"
-        - "SELF"
-        - "BACKGROUND"
+      defaultWorkspaceEnabled:
+        type: "boolean"
+        title: "Flag whether the default workspace should be supported"
+        default: true
+      registrationTypes:
+        type: "array"
+        title: "The selected types of registration"
+        items:
+          type: "string"
+          enum:
+          - "INVITE"
+          - "SELF"
+          - "BACKGROUND"
     title: "The application object to be created"
   apnsRequest:
     type: "object"
@@ -456,10 +462,6 @@ definitions:
       clientSecret:
         type: "string"
         title: "The secret key that can be used to make API callsa"
-      termsOfServiceUrl:
-        type: "string"
-        title: "An optional URL that can be stored in Whispir to refer to the terms\
-          \ of service for this application."
       deviceLimit:
         type: "number"
         format: "int32"
@@ -494,8 +496,13 @@ definitions:
         $ref: "#/definitions/apnsResponse"
       gcm:
         $ref: "#/definitions/gcm"
+      defaultWorkspaceEnabled:
+        type: "boolean"
+        title: "Flag whether to enable the app in the default workspace"
+        default: true
       registrationTypes:
         type: "array"
+        title: "The selected types of registration"
         items:
           type: "string"
           enum:
@@ -508,6 +515,7 @@ definitions:
         default: false
       links:
         type: "array"
+        title: "The links for this resource"
         items:
           $ref: "#/definitions/link"
   applicationsArray:
@@ -515,6 +523,7 @@ definitions:
     properties:
       applications:
         type: "array"
+        title: "The list of applications currently in Whispir"
         items:
           $ref: "#/definitions/applicationResponse"
     title: "The list of applications currently in Whispir"
@@ -553,10 +562,11 @@ definitions:
       from:
         type: "string"
         title: "The user that sent the message"
-      status:
+      result:
         $ref: "#/definitions/inviteSummaryStatus"
       links:
         type: "array"
+        title: "The links to various actions from this particular invitation"
         items:
           $ref: "#/definitions/link"
     title: "The invite response object"
@@ -584,7 +594,7 @@ definitions:
       from:
         type: "string"
         title: "The user that sent the message"
-      status:
+      result:
         $ref: "#/definitions/inviteSummaryStatus"
       recipients:
         type: "array"
@@ -592,6 +602,7 @@ definitions:
           $ref: "#/definitions/recipients"
       links:
         type: "array"
+        title: "The links to various actions from this particular invitation"
         items:
           $ref: "#/definitions/link"
     title: "The invite response object"

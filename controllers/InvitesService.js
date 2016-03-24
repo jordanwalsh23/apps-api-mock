@@ -14,7 +14,7 @@ exports.workspacesWorkspaceIdInvitesGet = function(args, res, next) {
     "appId" : "C39EFDBCAE349DFE",
     "sentDate" : "2016-01-25T10:00:00,816226465Z",
     "from" : "John Smith",
-    "status" : {
+    "result" : {
       "sent" : 46,
       "accepted" : 12
     },
@@ -28,7 +28,7 @@ exports.workspacesWorkspaceIdInvitesGet = function(args, res, next) {
     "appId" : "C39EFDBCAE349DFE",
     "sentDate" : "2016-01-25T10:00:00,816226465Z",
     "from" : "John Smith",
-    "status" : {
+    "result" : {
       "sent" : 46,
       "accepted" : 12
     },
@@ -38,31 +38,6 @@ exports.workspacesWorkspaceIdInvitesGet = function(args, res, next) {
       "url" : "/workspaces/B384DEFE3891AFCB/invites/AAF384FED8490DFE"
     } ]
   } ]
-};
-  
-  if(Object.keys(examples).length > 0) {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
-  }
-  else {
-    res.end();
-  }
-  
-  
-}
-
-exports.workspacesWorkspaceIdInvitesPost = function(args, res, next) {
-  /**
-   * parameters expected in the args:
-  * workspaceId (String)
-  * invite (InviteRequest)
-  **/
-  
-  
-  var examples = {};
-  examples['application/json'] = {
-  "status" : "SUCCESS",
-  "message" : "Your message has been accepted for processing."
 };
   
   if(Object.keys(examples).length > 0) {
@@ -90,7 +65,7 @@ exports.workspacesWorkspaceIdInvitesInviteIdGet = function(args, res, next) {
   "appId" : "C39EFDBCAE349DFE",
   "sentDate" : "2016-01-25T10:00:00,816226465Z",
   "from" : "John Smith",
-  "status" : {
+  "result" : {
     "sent" : 46,
     "accepted" : 12
   },
@@ -102,6 +77,31 @@ exports.workspacesWorkspaceIdInvitesInviteIdGet = function(args, res, next) {
     "lastUpdated" : "2016-01-25T10:00:00,816226465Z",
     "notes" : ""
   } ]
+};
+  
+  if(Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  }
+  else {
+    res.end();
+  }
+  
+  
+}
+
+exports.workspacesWorkspaceIdInvitesPost = function(args, res, next) {
+  /**
+   * parameters expected in the args:
+  * workspaceId (String)
+  * invite (InviteRequest)
+  **/
+  
+  
+  var examples = {};
+  examples['application/json'] = {
+  "status" : "SUCCESS",
+  "message" : "Your message has been accepted for processing."
 };
   
   if(Object.keys(examples).length > 0) {
